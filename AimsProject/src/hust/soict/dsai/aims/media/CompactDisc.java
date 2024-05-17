@@ -47,7 +47,7 @@ public class CompactDisc extends Disc implements Playable {
 	public void removeTrack(Track addTrack) {
 		for (Track track : tracks) {
 			if (track.isTrue(addTrack)){
-				tracks.remove(addTrack);
+				tracks.remove(track);
 				System.out.println("removed");
 				break;
 			}
