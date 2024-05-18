@@ -22,8 +22,6 @@ public class CompactDisc extends Disc implements Playable {
 		return this.artist;
 	}
 
-
-	
 	public float getLength() {
 		int sum = 0;
 		for (Track track : tracks) {
@@ -31,8 +29,6 @@ public class CompactDisc extends Disc implements Playable {
 		}
 		return sum;
 	}
-	
-	
 	
 	public void addTrack(Track addTrack) {
 		if (!tracks.contains(addTrack)){

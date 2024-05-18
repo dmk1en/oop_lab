@@ -104,6 +104,8 @@ public class Aims {
 		case "1":
 			cart.addMedia(media);
 			System.out.println("The number of media in cart: " + cart.getItemsOrdered().size());
+			
+			break;
 		case "2":
 			if (media instanceof Book) {
 				System.out.println("Cann't play book!");
@@ -117,14 +119,14 @@ public class Aims {
 					dvd.play();
 				}
 			}
-			mediaDetailsMenu(media);
+			
+			break;
 		case "0":
 			storeMenu();
 		default:
 			break;
-	}
-
-    	
+    	}
+    	mediaDetailsMenu(media);
     }
   
     public static void UpdateStore() {
@@ -149,6 +151,7 @@ public class Aims {
     			break;
 
     		default:
+    			UpdateStore();
     			break;
     	}
     }
@@ -169,39 +172,49 @@ public class Aims {
     	System.out.println("--------------------------------");
     	System.out.println("Enter id: ");
     	int id = sc.nextInt();
+    	sc.nextLine();
     	System.out.println("Enter title: ");
     	String title = sc.nextLine();
     	System.out.println("Enter category: ");
     	String category = sc.nextLine();
     	System.out.println("Enter cost: ");
     	float cost = sc.nextFloat();
+    	sc.nextLine();
     	
     	switch(AddMediaUserInput) {
     		case "1":
     			store.addMedia(new Book(id,title,category,cost));
+    		
     			break;
     		case "2":
     			System.out.println("Enter length: ");
     			float DVDlength = sc.nextFloat();
+    			sc.nextLine();
     			System.out.println("Enter director: ");
     			String DVDdirector = sc.nextLine();
     			store.addMedia(new DigitalVideoDisc(id,title,category,cost,DVDlength,DVDdirector));
+    		
     			break;
     		case "3":
     			System.out.println("Enter length: ");
     			float CDlength = sc.nextFloat();
+    			sc.nextLine();
     			System.out.println("Enter director: ");
     			String CDdirector = sc.nextLine();
     			System.out.println("Enter artist: ");
     			String CDartist = sc.nextLine();
     			store.addMedia(new CompactDisc(id,title,category,cost,CDlength,CDdirector,CDartist));
+    		
     			break;
     		case "0":
-    			cartMenu();
+    			UpdateStore();
     			break;
     		default:
+    			AddMedia();
     			break;
     	}
+    	UpdateStore();
+    	
     }
     
 	public static void RemoveMedia() {
@@ -214,6 +227,7 @@ public class Aims {
 				break;
 			}
 		}
+		UpdateStore();
 	}
     
 	public static void cartMenu() {
@@ -265,14 +279,14 @@ public class Aims {
     		case "1":
     			System.out.println("Enter ID: ");
     			int filterID = sc.nextInt();
+    			sc.nextLine();
     			for (Media media : cart.getItemsOrdered()) {
     				if (media.getId() == filterID ) {
     					System.out.println("Found!");
-    					media.toString();
+    					System.out.println(media.toString());
     					break;
     				}
     			}
-    			cartMenu();
     			break;
     		case "2":
     			System.out.println("Enter title: ");
@@ -280,11 +294,10 @@ public class Aims {
     			for (Media media : cart.getItemsOrdered()) {
     				if (media.getTitle().equals(filterTitle) ) {
     					System.out.println("Found!");
-    					media.toString();
+    					System.out.println(media.toString());
     					break;
     				}
     			}
-    			cartMenu();
     			break;
     		case "0":
     			cartMenu();
@@ -292,6 +305,8 @@ public class Aims {
     		default:
     			break;
     	}
+    	cartMenu();
+    	
 	}
 	
 	public static void sortMediaInCart() {
@@ -306,11 +321,9 @@ public class Aims {
     	switch(sortMediaInCartUserInput) {
     		case "1":
     			Collections.sort(cart.getItemsOrdered(), Media.COMPARE_BY_TITLE_COST);
-    			cartMenu();
     			break;
     		case "2":
     			Collections.sort(cart.getItemsOrdered(), Media.COMPARE_BY_COST_TITLE);
-    			cartMenu();
     			break;
     		case "0":
     			cartMenu();
@@ -318,6 +331,7 @@ public class Aims {
     		default:
     			break;
     	}
+    	cartMenu();
 	}
 	
 	public static void placeOder() {
