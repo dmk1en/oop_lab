@@ -25,8 +25,4 @@ public class Book extends Media {
     public String toString(){
         return "Book - " + getTitle() + " - " + getCategory() + ": " + String.valueOf(getCost()) + " $";
     }
-
-	
-	
-
 }
