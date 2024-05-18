@@ -1,26 +1,37 @@
 package hust.soict.dsai.aims.store;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
 
 public class Store {
-    private static int qtyStore = 0;
     public static final int MAX_NUMBERS_STORE = 1000;
 
-    public ArrayList<Media> itemsInStore;
+    public static List<Media> itemsInStore = new ArrayList<>();
 
     public void addMedia(Media media){
-        itemsInStore.add(media);
-        qtyStore++;
-        System.out.println("Added to the store");
+    	if (itemsInStore.size() < MAX_NUMBERS_STORE) {
+	        itemsInStore.add(media);
+	        System.out.println("Added to the store.");
+    	}else {
+    		System.out.println("Max storage!");
+    	}
     }
 
     public void removeMedia(Media media){
-    	itemsInStore.remove(media);
-    	qtyStore--;
-        System.out.println("Removed from the store");
+    	if (itemsInStore.size() < MAX_NUMBERS_STORE) {
+	    	itemsInStore.remove(media);
+	        System.out.println("Removed from the store.");
+    	}else {
+    		System.out.println("Max storage!");
+    	}
+    	
     }
+    	
+    
+    
+    
 }
+
 

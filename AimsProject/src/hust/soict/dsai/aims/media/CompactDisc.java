@@ -6,10 +6,10 @@ public class CompactDisc extends Disc implements Playable {
 	private String artist;
 	private ArrayList<Track> tracks;
 	
-	public CompactDisc(int id, String title, String category, float cost, float length, String director, String artist, ArrayList<Track> tracks) {
+	public CompactDisc(int id, String title, String category, float cost, float length, String director, String artist) {
 		super(id, title, category, cost, length, director);
 		this.artist = artist;
-		this.tracks = tracks;
+		
 	}
 	
 	public void play() {
@@ -35,24 +35,22 @@ public class CompactDisc extends Disc implements Playable {
 	
 	
 	public void addTrack(Track addTrack) {
-		for (Track track : tracks) {
-			if (track.isTrue(addTrack)){
-				tracks.add(addTrack);
-				System.out.println("added");
-				break;
-			}
+		if (!tracks.contains(addTrack)){
+			tracks.add(addTrack);
+			System.out.println("added");	
 		}
 	}
 	
 	public void removeTrack(Track addTrack) {
-		for (Track track : tracks) {
-			if (track.isTrue(addTrack)){
-				tracks.remove(track);
-				System.out.println("removed");
-				break;
-			}
+		if (tracks.contains(addTrack)){
+			tracks.remove(addTrack);
+			System.out.println("removed");	
 		}
 	}
+	
+    public String toString(){
+        return "CD - " + getTitle() + " - " + getCategory() + " - " + getDirector() + ": " + String.valueOf(getCost()) + " $";
+    }
 	
 
 }

@@ -1,2 +1,13 @@
-3. In Java, when you pass an object as a parameter to a method, you're passing the reference to the object, not the actual object itself. This means that changes made to the object's state within the method will affect the original object outside the method and this explain why after the changeTitle method the title is changed. However, if you reassign the reference within the method, it won't affect the original reference outside the method and this explain why after the swap method the title of these two object still remain.
+Q: What class should implement the Comparable interface?
+A: A class should implement the Comparable interface when instances of the class need to be sorted or compared. 
 
+Q: In those classes, how should you implement the compareTo() method be to reflect the ordering that we want?
+A: We can use compareTo() method for the attributes one by one in a order that we want
+
+Q: Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this
+Comparable interface approach?
+A: You cann't directly achieve this because Comparable defines a single natural ordering for objects. 
+
+Q: Suppose the DVDs has a different ordering rule from the other media types, that is by title, then decreasing
+length, then cost. How would you modify your code to allow this?
+A: In compareTo() method, first I would check the type of Media object, whether it is DVD or not, and if true, I would compare them by the attributes that I wanted.
