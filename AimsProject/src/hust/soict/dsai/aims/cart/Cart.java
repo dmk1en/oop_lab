@@ -31,7 +31,7 @@ public class Cart {
     	}
     }
     
-    public float  totalCost() {
+    public float totalCost() {
     	float cost = 0;
     	for (Media media : itemsOrdered) {
     		cost += media.getCost();
@@ -43,11 +43,13 @@ public class Cart {
     public void listingCart(){
         System.out.println("***********************CART***********************");
         System.out.println("Ordered Items:");
-        int i = 0;
+        int i = 1;
         for (Media media : itemsOrdered){
             System.out.println(String.valueOf(i) + ". " + media.toString());
             i++;
         }
+        System.out.println("Total Cost: " + String.valueOf(totalCost()) + " $");
+        
 
         System.out.println("***************************************************");
 
