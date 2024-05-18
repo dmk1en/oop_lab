@@ -5,21 +5,30 @@ import hust.soict.dsai.aims.media.Media;
 
 public class Cart {
 
-    private float cost;
-
     public static final int MAX_NUMBERS_ORDER = 20;
     
     private ArrayList<Media> itemsOrdered = new	ArrayList<Media>();
 
     public void addMedia(Media media) {
-    	itemsOrdered.add(media);
+    	if (itemsOrdered.size() < MAX_NUMBERS_ORDER) {
+    		itemsOrdered.add(media);
+    		System.out.println("Added to the cart.");
+    	}else {
+    		System.out.println("Full capacity of cart!");
+    	}
     }
     
     public void removeMedia(Media media) {
-    	itemsOrdered.remove(media);
+    	if (itemsOrdered.size() < MAX_NUMBERS_ORDER) {
+    		itemsOrdered.remove(media);
+    		System.out.println("Removed from the cart.");
+    	}else {
+    		System.out.println("Full capacity of cart!");
+    	}
     }
     
     public float  totalCost() {
+    	float cost = 0;
     	for (Media media : itemsOrdered) {
     		cost += media.getCost();
     	}
