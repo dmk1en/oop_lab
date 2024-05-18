@@ -8,6 +8,10 @@ public class Cart {
     public static final int MAX_NUMBERS_ORDER = 20;
     
     private ArrayList<Media> itemsOrdered = new	ArrayList<Media>();
+    
+    public ArrayList<Media> getItemsOrdered(){
+    	return itemsOrdered;
+    }
 
     public void addMedia(Media media) {
     	if (itemsOrdered.size() < MAX_NUMBERS_ORDER) {
@@ -36,4 +40,16 @@ public class Cart {
     	
     }
 
+    public void listingCart(){
+        System.out.println("***********************CART***********************");
+        System.out.println("Ordered Items:");
+        int i = 0;
+        for (Media media : itemsOrdered){
+            System.out.println(String.valueOf(i) + ". " + media.toString());
+            i++;
+        }
+
+        System.out.println("***************************************************");
+
+    }
 }   
