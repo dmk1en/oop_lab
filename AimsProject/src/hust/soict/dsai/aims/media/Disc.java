@@ -1,5 +1,8 @@
 package hust.soict.dsai.aims.media;
 
+import hust.soict.dsai.aims.exception.CostException;
+import hust.soict.dsai.aims.exception.TitleException;
+
 public class Disc extends Media {
 	private float length;
 	private String director;
@@ -13,8 +16,8 @@ public class Disc extends Media {
 	}
 	
 	
-	public Disc(int id, String title, String category, float cost, float length, String director) {
-        super(id, title, category, cost);  // Call to superclass constructor
+	public Disc(int id, String title, String category, float cost, float length, String director) throws IllegalArgumentException, TitleException, CostException {
+        super(id, title, category, cost); 
         this.length = length;
         this.director = director;
 	}

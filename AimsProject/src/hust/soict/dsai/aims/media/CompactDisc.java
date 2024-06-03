@@ -1,21 +1,39 @@
 package hust.soict.dsai.aims.media;
 
+import hust.soict.dsai.aims.exception.CostException;
+import hust.soict.dsai.aims.exception.PlayerException;
+import hust.soict.dsai.aims.exception.TitleException;
+
 import java.util.ArrayList;
 
 public class CompactDisc extends Disc implements Playable {
 	private String artist;
 	private ArrayList<Track> tracks;
 	
-	public CompactDisc(int id, String title, String category, float cost, float length, String director, String artist) {
+	public CompactDisc(int id, String title, String category, float cost, float length, String director, String artist) throws IllegalArgumentException, TitleException, CostException {
 		super(id, title, category, cost, length, director);
 		this.artist = artist;
 		
 	}
 	
-	public void play() {
-		for (Track track : tracks) {
-			track.play();
+	public String play() throws PlayerException {
+		StringBuffer result = new StringBuffer();
+		if(this.getLength() > 0) {
+			java.util.Iterator iter = tracks.iterator();
+			Track nextTrack;
+			while(iter.hasNext()) {
+				nextTrack = (Track) iter.next();
+				try {
+					result.append(nextTrack.play());
+				}catch(PlayerException e) {
+					throw e;
+				}
+			}
+			}else {
+				throw new PlayerException("ERROR: CD length is non-positive!");
 		}
+
+		return result.toString();
 	}
 	
 	public String getArtist() {
